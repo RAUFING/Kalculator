@@ -35,8 +35,7 @@ btn_del = QPushButton('DEL')
 btn_dl = QPushButton(":")
 btn_random = QPushButton('RANDOM NUMBER (1 to 100)')
 btn_del_all = QPushButton('DEL ALL')
-btn_0.setObjectName('0')
-print(btn_0.objectName)
+
 # Лэйауты
 main_v = QVBoxLayout()
 h1 = QHBoxLayout()
@@ -192,67 +191,91 @@ def btn_9f():
 def plus():
     global number
     global stop_sl
-    
-    if number[-1] in stop_sl or number == '0':
-        pass
-    elif len(number) == 19:
+    try:
+        if number[-1] in stop_sl or number == '0':
+            pass
+        elif len(number) == 19:
+            number = '0'
+            lbl.setText('Слишком много символов!(20)')
+        else:
+            number = number + '+'
+            lbl.setText(str(number))
+    except:
         number = '0'
-        lbl.setText('Слишком много символов!(20)')
-    else:
-        number = number + '+'
-        lbl.setText(str(number))
+        lbl.setText('Ошибка!')
 
 def minus():
     global number
     global stop_sl
-    if number[-1] in stop_sl or number == '0':
-        pass
-    elif len(number) == 19:
+    try:
+        if number[-1] in stop_sl or number == '0':
+            pass
+        elif len(number) == 19:
+            number = '0'
+            lbl.setText('Слишком много символов!(20)')
+        else:
+            number = number + '-'
+            lbl.setText(str(number))
+    except:
         number = '0'
-        lbl.setText('Слишком много символов!(20)')
-    else:
-        number = number + '-'
-        lbl.setText(str(number))
+        lbl.setText('Ошибка!')
 
 def um():
     global number
     global stop_sl
-    if number[-1] in stop_sl or number == '0':
-        pass
-    elif len(number) == 19:
+    try:
+        if number[-1] in stop_sl or number == '0':
+            pass
+        elif len(number) == 19:
+            number = '0'
+            lbl.setText('Слишком много символов!(20)')
+        else:
+            number = number + '*'
+            lbl.setText(str(number))
+    except:
         number = '0'
-        lbl.setText('Слишком много символов!(20)')
-    else:
-        number = number + '*'
-        lbl.setText(str(number))
+        lbl.setText('Ошибка!')
 
 def dl():
     global number
     global stop_sl
-    if number[-1] in stop_sl or number == '0':
-        pass
-    else:
-        number = number + '/'
-        lbl.setText(str(number))
+    try:
+        if number[-1] in stop_sl or number == '0':
+            pass
+        elif len(number) == 19:
+            number = '0'
+            lbl.setText('Слишком много символов!(20)')
+        else:
+            number = number + '/'
+            lbl.setText(str(number))
+    except:
+        number = '0'
+        lbl.setText('Ошибка!')
 
 def equare():
- 
-    global stop_sl
     global number
-    if number[-1] in stop_sl or number == '0':
-        pass
-    elif len(number) == 19:
+    try:
+        global stop_sl
+
+        if number[-1] in stop_sl or number == '0':
+           pass
+        elif len(number) == 19:
+           number = '0'
+           lbl.setText(number)
+        else:
+            try:
+                lbl.setText(str(eval(number)))
+
+                number = ''
+            except:
+
+                number = '0'
+                lbl.setText('Ошибка!')
+    except:
         number = '0'
-        lbl.setText(number)
-    else:
-        try:
-            lbl.setText(str(eval(number)))
+        lbl.setText('Ошибка!')
+ 
 
-            number = ''
-        except:
-
-            number = '0'
-            lbl.setText('Ошибка!')
 
 def delit_all():
     global number
@@ -261,13 +284,17 @@ def delit_all():
 
 def delit():
     global number
-    if number == 0:
-        return False
-    nl = len(number) - 1
-    number = number[0:nl]
-    if number == '':
-        number = 0
-    lbl.setText(number)
+    try:
+        if number == 0:
+           return False
+        nl = len(number) - 1
+        number = number[0:nl]
+        if number == '':
+           number = 0
+        lbl.setText(number)
+    except:
+        number = '0'
+        lbl.setText(number)
 
 def randomf():
     global number
